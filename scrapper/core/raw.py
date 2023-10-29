@@ -17,7 +17,6 @@ def scrape(request, args, _id):
 
         page_content = ""
         try:
-            setattr(args, "wait_until", "networkidle")
             setattr(args, "url", "view-source:" + args.url)
             page_processing(page, args=args)
             with open(PARSER_SCRIPTS_DIR / 'raw.js') as fd:

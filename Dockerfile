@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 mcr.microsoft.com/playwright/python:v1.31.0-focal
+FROM mcr.microsoft.com/playwright/python:v1.31.0-focal
 
 # RUN apt update
 COPY requirements.txt ./
