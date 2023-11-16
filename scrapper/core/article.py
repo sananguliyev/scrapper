@@ -30,6 +30,7 @@ def scrape(request, args, _id):
         # evaluating JavaScript: parse DOM and extract article content
         parser_args = {
             # Readability options:
+            'targetSelector': args.target_selector,
             'maxElemsToParse': args.max_elems_to_parse,
             'nbTopCandidates': args.nb_top_candidates,
             'charThreshold': args.char_threshold,
