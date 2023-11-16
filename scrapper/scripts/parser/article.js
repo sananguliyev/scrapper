@@ -15,12 +15,15 @@
         // remove marked elements
         document.querySelectorAll(".scrapper-hidden").forEach(el => el.remove());
 
+        // keep only target selector if specified
         let targetSelector = "%(targetSelector)s";
         if (targetSelector !== "") {
           let targetElement = document.querySelector(targetSelector);
+          if (targetElement === null) {
+            return { err: ["Provided target selector has not found on the page: " + targetSelector] };
+          }
           document.querySelector("body").innerHTML = targetElement.innerHTML;
         }
-
 
         // parse the article with Mozilla's Readability.js (https://videoinu.com/blog/firefox-reader-view-heuristics/)
         let documentClone = document.cloneNode(true);
