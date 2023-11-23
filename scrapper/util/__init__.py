@@ -5,6 +5,9 @@ def levenshtein_similarity(str1, str2):
     str1 = ''.join(filter(str.isalpha, str1)).lower()
     str2 = ''.join(filter(str.isalpha, str2)).lower()
 
+    if max(len(str1), len(str2)) == 0:
+        return 0
+
     # Create a matrix to hold the distances
     d = [[0] * (len(str2) + 1) for _ in range(len(str1) + 1)]
 
