@@ -17,10 +17,15 @@ def scrape(request, args, _id):
 
         page_content = ""
         try:
-            setattr(args, "url", "view-source:" + args.url)
+            # return full source if there is no target selector
+            if args.target_selector == "":
+                setattr(args, "url", "view-source:" + args.url)
             page_processing(page, args=args)
+            parser_args = {
+                'targetSelector': args.target_selector
+            }
             with open(PARSER_SCRIPTS_DIR / 'raw.js') as fd:
-                page_content = page.evaluate(fd.read())
+                page_content = page.evaluate(fd.read() % parser_args)
         except Error as error:
             print(error)
 

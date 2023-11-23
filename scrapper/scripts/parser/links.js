@@ -38,6 +38,16 @@
         // remove marked elements
         document.querySelectorAll(".scrapper-hidden").forEach(el => el.remove());
 
+        // keep only target selector if specified
+        let targetSelector = "%(targetSelector)s";
+        if (targetSelector !== "") {
+          let targetElement = document.querySelector(targetSelector);
+          if (targetElement === null) {
+            return { err: ["Provided target selector has not found on the page: " + targetSelector] };
+          }
+          document.querySelector("body").innerHTML = targetElement.innerHTML;
+        }
+
         // traverse the DOM tree and extract links
         let links = [];
         let seenTexts = new Set();

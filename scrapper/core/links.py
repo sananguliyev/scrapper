@@ -32,7 +32,9 @@ def scrape(request, args, _id):
         url = page.url
 
         # evaluating JavaScript: parse DOM and extract links of articles
-        parser_args = {}
+        parser_args = {
+            'targetSelector': args.target_selector
+        }
         with open(PARSER_SCRIPTS_DIR / 'links.js') as fd:
             links = page.evaluate(fd.read() % parser_args)
 
