@@ -31,6 +31,7 @@ def scrape(request, args, _id):
         parser_args = {
             # Readability options:
             'targetSelector': args.target_selector,
+            'removeSelector': args.remove_selector,
             'maxElemsToParse': args.max_elems_to_parse,
             'nbTopCandidates': args.nb_top_candidates,
             'charThreshold': args.char_threshold,
