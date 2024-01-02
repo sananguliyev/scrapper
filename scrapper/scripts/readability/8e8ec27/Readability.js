@@ -1298,7 +1298,7 @@ Readability.prototype = {
 
           // But first check if we actually have something
           if (!this._attempts[0].textLength) {
-            return null;
+            return this._attempts[0].articleContent;
           }
 
           articleContent = this._attempts[0].articleContent;
