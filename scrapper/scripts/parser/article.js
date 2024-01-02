@@ -15,6 +15,16 @@
         // remove marked elements
         document.querySelectorAll(".scrapper-hidden").forEach(el => el.remove());
 
+        // remove defined selector if specified
+        let removeSelector = "%(removeSelector)s";
+        if (removeSelector !== "") {
+          let removeElement = document.querySelectorAll(removeSelector);
+          if (removeElement === null) {
+            return { err: ["Provided remove selector has not found on the page: " + removeSelector] };
+          }
+          removeElement.forEach(e => e.remove());
+        }
+
         // keep only target selector if specified
         let targetSelector = "%(targetSelector)s";
         if (targetSelector !== "") {
