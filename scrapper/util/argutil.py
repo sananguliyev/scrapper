@@ -209,7 +209,7 @@ OPTIONS = (
     ('nb-top-candidates', (is_number, gt(0)), 5),
     # The number of characters an article must have in order to return a result.
     # The default value is 500.
-    ('char-threshold', (is_number, gt(0)), 500),
+    ('char-threshold', (is_number, gte(0)), 500),
 
     # # # Link parser settings:
     # The median (middle value) of the link text length in characters. The default value is 40 characters.
