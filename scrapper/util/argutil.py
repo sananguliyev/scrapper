@@ -202,6 +202,8 @@ OPTIONS = (
 
     # The target selector in the page to keep in body for better readability.
     ('target-selector', (), ''),
+    # The remove selector in the page to keep in body for better readability.
+    ('remove-selector', (), ''),
     # The maximum number of elements to parse. The default value is 0, which means no limit.
     ('max-elems-to-parse', (is_number, gte(0)), 0),
     # The number of top candidates to consider when analysing how tight the competition is among candidates.
