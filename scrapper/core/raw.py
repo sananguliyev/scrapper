@@ -22,7 +22,8 @@ def scrape(request, args, _id):
                 setattr(args, "url", "view-source:" + args.url)
             page_processing(page, args=args)
             parser_args = {
-                'targetSelector': args.target_selector
+                'targetSelector': args.target_selector,
+                'removeSelector': args.remove_selector,
             }
             with open(PARSER_SCRIPTS_DIR / 'raw.js') as fd:
                 page_content = page.evaluate(fd.read() % parser_args)

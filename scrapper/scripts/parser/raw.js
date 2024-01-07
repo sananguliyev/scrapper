@@ -25,6 +25,16 @@
       });
     }
 
+    // remove defined selector if specified
+    let removeSelector = "%(removeSelector)s";
+    if (removeSelector !== "") {
+      let removeElement = document.querySelectorAll(removeSelector);
+      if (removeElement === null) {
+        return { err: ["Provided remove selector has not found on the page: " + removeSelector] };
+      }
+      removeElement.forEach(e => e.remove());
+    }
+
     let result = document.body.innerText;
 
     // keep only target selector if specified
