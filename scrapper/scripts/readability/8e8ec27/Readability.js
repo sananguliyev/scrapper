@@ -439,7 +439,12 @@ Readability.prototype = {
         } else if (this._hasSingleTagInsideElement(node, "DIV") || this._hasSingleTagInsideElement(node, "SECTION")) {
           var child = node.children[0];
           for (var i = 0; i < node.attributes.length; i++) {
-            child.setAttribute(node.attributes[i].name, node.attributes[i].value);
+            try {
+              child.setAttribute(node.attributes[i].name, node.attributes[i].value);
+            } catch (error) {
+              console.error(node.attributes[i], error);
+            }
+
           }
           node.parentNode.replaceChild(child, node);
           node = child;
